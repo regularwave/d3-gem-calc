@@ -62,6 +62,15 @@ input {
     margin: .5rem;
 }
 
+input:not(:checked)+.gemImg {
+    filter: grayscale(100%);
+    opacity: 25%;
+}
+
+/* input[type="radio"] {
+    display: none;
+} */
+
 img {
     vertical-align: middle;
 }
