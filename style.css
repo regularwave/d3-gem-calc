@@ -13,7 +13,6 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-
     background: black;
 }
 
@@ -22,13 +21,16 @@ body {
     max-width: 100%;
     width: 100%;
     text-align: center;
-    /* border: 1px solid orangered; */
-
 }
 
 .header {
     font-family: "Diablo", sans-serif;
     color: orangered;
+}
+
+footer {
+    font-family: "Diablo", sans-serif;
+    color: brown;
 }
 
 .content {
