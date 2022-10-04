@@ -23,7 +23,7 @@ body {
     width: 100%;
     text-align: center;
     /* border: 1px solid orangered; */
-    border-radius: .3rem;
+
 }
 
 .header {
@@ -40,7 +40,9 @@ body {
 }
 
 .tile {
-    border: 1px dotted green;
+    font-family: "Diablo", sans-serif;
+    border: 1px solid brown;
+    border-radius: .3rem;
 }
 
 .gemTile:first-child {
@@ -57,7 +59,8 @@ input {
     vertical-align: middle;
     background: #202020;
     color: whitesmoke;
-    border: 1px solid #550B0B;
+    border: 1px solid brown;
+    border-radius: .3rem;
     text-align: center;
     margin: .5rem;
 }
@@ -67,9 +70,9 @@ input:not(:checked)+.gemImg {
     opacity: 25%;
 }
 
-/* input[type="radio"] {
-    display: none;
-} */
+#recipeCard {
+    font-family: "Roboto", sans-serif;
+}
 
 img {
     vertical-align: middle;
