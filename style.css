@@ -81,5 +81,5 @@ img {
 }
 
 .third {
-    width: calc(100%/3 - 10px/1.6)
+    width: calc(100%/3 - 10px/1.6);
 }
