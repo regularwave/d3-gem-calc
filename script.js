@@ -1,4 +1,6 @@
 const inputs = document.querySelectorAll('input');
+const visCount = document.getElementById('visCount');
+updateSiteCounter();
 
 inputs.forEach(input => {
     input.addEventListener('change', (a) => calcGemRecipe(a))
@@ -35,4 +37,12 @@ function printGemRecipe(gems) {
         if (gems.rR > 0) { recipeCard.innerHTML = recipeCard.innerHTML + '<p>' + "Create " + gems.rR + " Royal gem" + (gems.rR == 1 ? "" : "s") + "." + '</p>'; }
         recipeCard.innerHTML = recipeCard.innerHTML + '<p>' + "Create " + gems.wFR + " Flawless Royal gem" + (gems.wFR == 1 ? "" : "s") + "." + '</p>';
     }
+}
+
+function updateSiteCounter() {
+    fetch('https://api.countapi.xyz/hit/regularwave_d3-gem-calc')
+        .then(response => response.json())
+        .then(response => {
+            visCount.innerHTML = response.value;
+        })
 }
