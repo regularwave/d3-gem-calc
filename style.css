@@ -1,85 +1,224 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap');
-@import url('http://fonts.cdnfonts.com/css/diablo');
+@import url('https://fonts.cdnfonts.com/css/diablo');
+
+:root {
+    --bg-color: #000000;
+    --panel-bg: #111111;
+    --input-bg: #202020;
+    --text-primary: brown;
+    --text-accent: orangered;
+    --text-light: whitesmoke;
+    --border-color: brown;
+    --border-radius: 0.3rem;
+    --font-main: "Roboto", sans-serif;
+    --font-header: "Diablo", sans-serif;
+}
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-main);
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: black;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    padding: 1rem;
 }
 
-.floatcontainer {
-    margin: auto;
-    max-width: 100%;
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
+    max-width: 750px;
+}
+
+.top-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.goal-panel {
+    flex: 0 0 auto;
+}
+
+.inventory-panel {
+    flex: 1 1 auto;
+}
+
+header h1 {
+    font-family: var(--font-header);
+    color: var(--text-accent);
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
     text-align: center;
 }
 
-.header {
-    font-family: "Diablo", sans-serif;
-    color: orangered;
+.panel h2 {
+    font-family: var(--font-header);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-accent);
 }
 
-footer {
-    font-family: "Diablo", sans-serif;
-    color: brown;
-}
-
-.content {
-    font-family: "Roboto", sans-serif;
-    color: brown;
+.gem-group {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.gem-group.horizontal {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.tile {
-    font-family: "Diablo", sans-serif;
-    border: 1px solid brown;
-    border-radius: .3rem;
+.gem-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
 }
 
-.gemTile:first-child {
-    margin-top: 1rem;
+.gem-img-wrapper {
+    position: relative;
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    transition: all 0.2s ease-in-out;
+    -webkit-mask-image: var(--gem-url);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: var(--gem-url);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
 
-.GemTile:last-child {
-    margin-bottom: 1rem;
+.gem-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    vertical-align: middle;
+    display: block;
+}
+
+.foil-overlay {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: linear-gradient(to right,
+            rgba(255, 0, 0, 0.8) 0%,
+            rgba(255, 165, 0, 0.8) 16.66%,
+            rgba(255, 255, 0, 0.8) 33.33%,
+            rgba(0, 255, 0, 0.8) 50%,
+            rgba(0, 191, 255, 0.8) 66.66%,
+            rgba(255, 0, 255, 0.8) 83.33%,
+            rgba(255, 0, 0, 0.8) 100%);
+    background-size: 50% 100%;
+    transform: rotate(45deg);
+    mix-blend-mode: color;
+    pointer-events: none;
+    animation: foil-shift 2.5s linear infinite;
+}
+
+@keyframes foil-shift {
+    0% {
+        background-position: 0% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 input {
-    font-family: "Diablo", sans-serif;
-    font-size: 3rem;
-    vertical-align: middle;
-    background: #202020;
-    color: whitesmoke;
-    border: 1px solid brown;
-    border-radius: .3rem;
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    background: var(--input-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     text-align: center;
-    margin: .5rem;
+    width: 65px;
+    padding: 0.15rem;
 }
 
-input:not(:checked)+.gemImg {
-    filter: grayscale(100%);
-    opacity: 25%;
+input:focus {
+    outline: 2px solid var(--text-accent);
 }
 
-#recipeCard {
-    font-family: "Roboto", sans-serif;
+.recipe-card p {
+    margin: 0.25rem 0;
+    font-size: 1rem;
+    color: var(--text-light);
 }
 
-img {
-    vertical-align: middle;
+footer {
+    font-family: var(--font-header);
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
-.third {
-    width: calc(100%/3 - 10px/1.6);
+footer a {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--text-light);
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .panel {
+        padding: 0.5rem;
+    }
+
+    .gem-img-wrapper {
+        height: 36px;
+        width: 36px;
+    }
+
+    input {
+        width: 50px;
+        font-size: 1.25rem;
+    }
+
+    .panel h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .top-row {
+        gap: 0.5rem;
+    }
 }

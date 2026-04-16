@@ -4,53 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Gem Calculator</title>
     <link rel="stylesheet" href="style.css" />
-    <title>Diablo 3 Gem Calculator</title>
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div id="container" class="floatcontainer">
-        <h1 id="header" class="header">
-            D3 Gem Calculator
-        </h1>
-        <div id="content" class="content">
-            <div id="want" class="tile third">
-                Gems I want to create
-                <div id="wantGemCardFR" class="gemTile">
-                    <img src="./img/FR.png" class="gemImg">
-                    <input type="number" id="wantFR" min="0" max="999" value="0">
+    <main class="dashboard">
+        <header>
+            <h1>D3 Gem Calculator</h1>
+        </header>
+
+        <div class="top-row">
+            <section class="panel goal-panel">
+                <h2>Goal</h2>
+                <div class="gem-group">
+                    <label class="gem-control">
+                        <div class="gem-img-wrapper" title="Flawless Royal Gem" style="--gem-url: url('./img/FR.png');">
+                            <img src="./img/FR.png" alt="Flawless Royal Gem" class="gem-img">
+                            <div class="foil-overlay"></div>
+                        </div>
+                        <input type="number" id="wantFR" min="0" max="999" value="0" aria-label="Flawless Royal Gems Wanted">
+                    </label>
                 </div>
-            </div>
-            <div id="have" class="tile third">
-                Gems I already have
-                <div id="haveGemCardR" class="gemTile">
-                    <img src="./img/R.png" class="gemImg">
-                    <input type="number" id="haveR" class="haveGem" min="0" max="999" value="0">
+            </section>
+
+            <section class="panel inventory-panel">
+                <h2>Inventory</h2>
+                <div class="gem-group horizontal">
+                    <label class="gem-control">
+                        <div class="gem-img-wrapper" title="Royal Gem" style="--gem-url: url('./img/R.png');">
+                            <img src="./img/R.png" alt="Royal Gem" class="gem-img">
+                            <div class="foil-overlay"></div>
+                        </div>
+                        <input type="number" id="haveR" min="0" max="999" value="0" aria-label="Royal Gems Owned">
+                    </label>
+                    <label class="gem-control">
+                        <div class="gem-img-wrapper" title="Flawless Imperial Gem" style="--gem-url: url('./img/FI.png');">
+                            <img src="./img/FI.png" alt="Flawless Imperial Gem" class="gem-img">
+                            <div class="foil-overlay"></div>
+                        </div>
+                        <input type="number" id="haveFI" min="0" max="999" value="0" aria-label="Flawless Imperial Gems Owned">
+                    </label>
+                    <label class="gem-control">
+                        <div class="gem-img-wrapper" title="Imperial Gem" style="--gem-url: url('./img/I.png');">
+                            <img src="./img/I.png" alt="Imperial Gem" class="gem-img">
+                            <div class="foil-overlay"></div>
+                        </div>
+                        <input type="number" id="haveI" min="0" max="999" value="0" aria-label="Imperial Gems Owned">
+                    </label>
+                    <label class="gem-control">
+                        <div class="gem-img-wrapper" title="Marquise Gem" style="--gem-url: url('./img/M.png');">
+                            <img src="./img/M.png" alt="Marquise Gem" class="gem-img">
+                            <div class="foil-overlay"></div>
+                        </div>
+                        <input type="number" id="haveM" min="0" max="999" value="0" aria-label="Marquise Gems Owned">
+                    </label>
                 </div>
-                <div id="haveGemCardFI" class="gemTile">
-                    <img src="./img/FI.png" class="gemImg">
-                    <input type="number" id="haveFI" class="haveGem" min="0" max="999" value="0">
-                </div>
-                <div id="haveGemCardI" class="gemTile">
-                    <img src="./img/I.png" class="gemImg">
-                    <input type="number" id="haveI" class="haveGem" min="0" max="999" value="0">
-                </div>
-                <div id="haveGemCardM" class="gemTile">
-                    <img src="./img/M.png" class="gemImg">
-                    <input type="number" id="haveM" class="haveGem" min="0" max="999" value="0">
-                </div>
-            </div>
-            <div id="recipe" class="tile third">
-                Instructions
-                <div id="recipeCard">
-                    <p>Enter the number of Flawless Royal gems you want to create in the left column.</p>
-                    <p>Enter the number of different gems you already have in the center column.</p>
-                    <p>This column will update with the steps you need to take.</p>
-                </div>
-            </div>
+            </section>
         </div>
-    </div>
+
+        <section class="panel">
+            <h2>Instructions</h2>
+            <div id="recipeCard" class="recipe-card">
+                <p>Enter your goal and current inventory above to see the crafting steps.</p>
+            </div>
+        </section>
+    </main>
+
     <footer>
         Issues? Report them on <a href="https://github.com/regularwave/d3-gem-calc" target="_blank">GitHub</a>.
     </footer>
